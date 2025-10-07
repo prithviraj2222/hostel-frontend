@@ -1,38 +1,1026 @@
-.App {
+/* 🌿 Global Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  background: #f6faff;
+  color: #222e3a;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utility Classes */
+.rounded {
+  border-radius: 12px;
+}
+
+.shadow {
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.07);
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-right: 0.5em;
+  font-size: 1.1em;
+  opacity: 0.8;
+}
+
+/* Buttons */
+.button,
+.add-student-form button,
+.update-fees-form button,
+.inventory-form button,
+.export-import-button,
+.students-table button,
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.2em;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.06);
+  outline: none;
+}
+
+.button-primary,
+.add-student-form button,
+.update-fees-form button,
+.inventory-form button,
+.export-import-button,
+.back-button {
+  background: linear-gradient(90deg, #4f8cff 0%, #3b6fd8 100%);
+  color: #fff;
+}
+
+.button-primary:hover,
+.add-student-form button:hover,
+.update-fees-form button:hover,
+.inventory-form button:hover,
+.export-import-button:hover,
+.back-button:hover {
+  background: linear-gradient(90deg, #3b6fd8 0%, #2851a3 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.button-secondary {
+  background: #eaf1fb;
+  color: #3b6fd8;
+}
+
+.button-secondary:hover {
+  background: #d4e3fa;
+}
+
+.button-danger,
+.students-table button,
+.inventory-table .delete-btn {
+  background: #ff4d4f;
+  color: #fff;
+}
+
+.button-danger:hover,
+.students-table button:hover,
+.inventory-table .delete-btn:hover {
+  background: #d9363e;
+}
+
+.inventory-table .edit-btn {
+  background: #ffd166;
+  color: #222e3a;
+}
+
+.inventory-table .edit-btn:hover {
+  background: #ffe29a;
+}
+
+/* Forms & Inputs */
+input,
+select,
+textarea {
+  padding: 0.8em 1em;
+  border: 1px solid #c6d6f3;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px #eaf1fb;
+  outline: none;
+}
+
+/* --- Add Student Form UI (Clean & Consistent) --- */
+.add-student-container {
+  max-width: 400px;
+  padding: 2.2rem 1.3rem 2rem 1.3rem;
+  background: #fafdff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.13);
+  margin: 40px auto 0 auto;
+  border: 1.5px solid #eaf1fb;
+}
+
+.add-student-container h2 {
+  font-size: 1.45rem;
+  color: #2851a3;
+  margin-bottom: 2rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  font-weight: 700;
+}
+
+.add-student-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.add-student-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  margin-bottom: 0.2rem;
+}
+
+.add-student-form label {
+  font-weight: 600;
+  color: #2851a3;
+  font-size: 1.04rem;
+  margin-bottom: 0.08em;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+  padding-left: 2px;
+}
+
+.add-student-form input[type="text"],
+.add-student-form input[type="number"],
+.add-student-form input[type="date"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.92em 1em;
+  border-radius: 9px;
+  border: 1.5px solid #dbeafe;
+  background: #fff;
+  font-size: 1.08rem;
+  margin-bottom: 0;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #222e3a;
+}
+
+.add-student-form input:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px #eaf1fb;
+}
+
+.add-student-form input::placeholder {
+  color: #8ba7d9;
+  opacity: 1;
+  font-size: 1.01rem;
+  letter-spacing: 0.01em;
+}
+
+.add-student-form button[type="submit"] {
+  margin-top: 0.7em;
+  width: 100%;
+  padding: 1em 0;
+  font-size: 1.09rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #4f8cff 0%, #3b6fd8 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.09);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.add-student-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #3b6fd8 0%, #2851a3 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.add-student-form button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .add-student-container {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    border-radius: 14px;
+    margin-top: 18px;
+    max-width: 98vw;
+  }
+  .add-student-form button[type="submit"] {
+    font-size: 1rem;
+    padding: 0.9em 0;
+  }
+}
+
+/* --- Update Fees Page UI (Perfectly Clean & Consistent) --- */
+.update-fees-container {
+  max-width: 400px;
+  padding: 2.2rem 1.3rem 2rem 1.3rem;
+  background: #fafdff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.13);
+  margin: 40px auto 0 auto;
+  border: 1.5px solid #eaf1fb;
+}
+
+.update-fees-container h2 {
+  font-size: 1.45rem;
+  color: #2851a3;
+  margin-bottom: 2rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  font-weight: 700;
+}
+
+.update-fees-container .update-select {
+  width: 100%;
+  margin-bottom: 1.3rem;
+  padding: 0.92em 1em;
+  border-radius: 9px;
+  border: 1.5px solid #dbeafe;
+  background: #fff;
+  font-size: 1.08rem;
+  color: #222e3a;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+}
+
+.update-fees-container .update-select:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px #eaf1fb;
+}
+
+/* Form Styling */
+.update-fees-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.update-fees-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  margin-bottom: 0.2rem;
+}
+
+.update-fees-form label {
+  font-weight: 600;
+  color: #2851a3;
+  font-size: 1.04rem;
+  margin-bottom: 0.08em;
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+  padding-left: 2px;
+}
+
+.update-fees-form input[type="date"],
+.update-fees-form input[type="number"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.92em 1em;
+  border-radius: 9px;
+  border: 1.5px solid #dbeafe;
+  background: #fff;
+  font-size: 1.08rem;
+  margin-bottom: 0.1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #222e3a;
+}
+
+.update-fees-form input:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px #eaf1fb;
+}
+
+.update-fees-form button[type="submit"] {
+  margin-top: 0.7em;
+  width: 100%;
+  padding: 1em 0;
+  font-size: 1.09rem;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #4f8cff 0%, #3b6fd8 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.09);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.update-fees-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #3b6fd8 0%, #2851a3 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.update-fees-form button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .update-fees-container {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    border-radius: 14px;
+    margin-top: 18px;
+    max-width: 98vw;
+  }
+  .update-fees-form button[type="submit"] {
+    font-size: 1rem;
+    padding: 0.9em 0;
+  }
+}
+
+/* --- Inventory Page UI (Clean & Consistent) --- */
+.inventory-container {
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+  padding: 2.2rem 1.3rem 2rem 1.3rem;
+  background: #fafdff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.13);
+  border: 1.5px solid #eaf1fb;
+}
+
+.inventory-container h2 {
+  font-size: 1.45rem;
+  color: #2851a3;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  font-weight: 700;
+}
+
+.inventory-container label {
+  font-weight: 600;
+  color: #2851a3;
+  font-size: 1.04rem;
+  margin-bottom: 0.3em;
+  letter-spacing: 0.01em;
+  display: block;
+}
+
+.inventory-container input[type="month"] {
+  width: 200px;
+  padding: 0.7em 1em;
+  border-radius: 8px;
+  border: 1.5px solid #dbeafe;
+  background: #fff;
+  font-size: 1.07rem;
+  margin-bottom: 1.2rem;
+  margin-left: 0.5em;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #222e3a;
+}
+
+.inventory-container input[type="month"]:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px #eaf1fb;
+}
+
+/* Inventory Form */
+.inventory-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.inventory-form input[type="text"],
+.inventory-form input[type="number"] {
+  width: 160px;
+  box-sizing: border-box;
+  padding: 0.85em 1em;
+  border-radius: 8px;
+  border: 1.5px solid #dbeafe;
+  background: #fff;
+  font-size: 1.07rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  color: #222e3a;
+}
+
+.inventory-form input:focus {
+  border-color: #4f8cff;
+  box-shadow: 0 0 0 2px #eaf1fb;
+}
+
+.inventory-form button[type="submit"] {
+  padding: 0.85em 1.5em;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #4f8cff 0%, #3b6fd8 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  font-size: 1.05rem;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.09);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.inventory-form button[type="submit"]:hover {
+  background: linear-gradient(90deg, #3b6fd8 0%, #2851a3 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.inventory-form button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Inventory Table */
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  margin-top: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.06);
+}
+
+.inventory-table th,
+.inventory-table td {
+  padding: 0.75em 1em;
+  border: 1px solid #eaf1fb;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.inventory-table th {
+  background: #eaf1fb;
+  color: #3b6fd8;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.inventory-table tr:hover {
+  background: #f3f7ff;
+  transition: background 0.2s;
+}
+
+.inventory-table td {
+  color: #222e3a;
+}
+
+.inventory-table .edit-btn {
+  background: #ffd166;
+  color: #222e3a;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin-right: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.inventory-table .edit-btn:hover {
+  background: #ffe29a;
+}
+
+.inventory-table .delete-btn {
+  background: #ff4d4f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.inventory-table .delete-btn:hover {
+  background: #d9363e;
+}
+
+.inventory-total {
+  text-align: right;
+  margin-top: 1.5em;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* --- Responsive Inventory & Students Table for Mobile --- */
+@media (max-width: 700px) {
+  .inventory-table,
+  .students-table {
+    font-size: 0.97rem;
+    border-radius: 0;
+    box-shadow: none;
+    margin-top: 0.5rem;
+  }
+  .inventory-table thead,
+  .students-table thead {
+    display: none;
+  }
+  .inventory-table tr,
+  .students-table tr {
+    display: block;
+    margin-bottom: 1.1em;
+    border: 1px solid #eaf1fb;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.06);
+    padding: 0.5em 0.3em;
+  }
+  .inventory-table td,
+  .students-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 0.4em;
+    border: none;
+    border-bottom: 1px solid #f0f4fa;
+    position: relative;
+    font-size: 1em;
+  }
+  .inventory-table td:last-child,
+  .students-table td:last-child {
+    border-bottom: none;
+  }
+  .inventory-table td::before,
+  .students-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #3b6fd8;
+    flex-basis: 50%;
+    text-align: left;
+    font-size: 0.98em;
+    padding-right: 1em;
+    opacity: 0.95;
+    min-width: 90px;
+    display: inline-block;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (max-width: 900px) {
+  .inventory-container {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  }
+  .inventory-form {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .inventory-form input[type="text"],
+  .inventory-form input[type="number"] {
+    width: 100%;
+  }
+  .inventory-container input[type="month"] {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* Containers & Cards */
+.add-student-container,
+.students-list-container,
+.update-fees-container,
+.student-profile-container,
+.inventory-container,
+.export-import-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.07);
+  padding: 2rem 1.5rem;
+  margin: 32px auto;
+  width: 95%;
+  max-width: 500px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.students-list-container,
+.inventory-container {
+  max-width: 1000px;
+}
+
+.add-student-container:hover,
+.students-list-container:hover,
+.update-fees-container:hover,
+.student-profile-container:hover,
+.inventory-container:hover,
+.export-import-container:hover {
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.13);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #2a4d9b;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 1rem;
+}
+
+.add-student-container h2,
+.students-list-container h2,
+.update-fees-container h2,
+.student-profile-container h2,
+.inventory-container h2,
+.export-import-container h2 {
+  font-size: 1.4rem;
+  color: #3b6fd8;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+/* Tables */
+.students-table,
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  margin-top: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.students-table th,
+.students-table td,
+.inventory-table th,
+.inventory-table td {
+  padding: 0.75em 1em;
+  border: 1px solid #eaf1fb;
+  text-align: center;
+}
+
+.students-table thead,
+.inventory-table th {
+  background: #eaf1fb;
+  color: #3b6fd8;
+}
+
+.students-table tr:hover,
+.inventory-table tr:hover {
+  background: #f3f7ff;
+  transition: background 0.2s;
+}
+
+.students-table td a,
+.students-table td span {
+  color: #4f8cff;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.students-table td a:hover,
+.students-table td span:hover {
+  color: #2851a3;
+}
+
+/* --- Student Profile Styling --- */
+.student-profile-container {
+  max-width: 500px;
+  margin: 40px auto 0 auto;
+  padding: 2.2rem 1.3rem 2rem 1.3rem;
+  background: #fafdff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(30, 64, 175, 0.13);
+  border: 1.5px solid #eaf1fb;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.student-profile-container h2 {
+  font-size: 1.45rem;
+  color: #2851a3;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  font-weight: 700;
+}
+
+.student-card {
+  background: #f6faff;
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.06);
+  border: 1px solid #eaf1fb;
+}
+
+.student-card p {
+  margin-bottom: 0.7em;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.student-card p strong {
+  color: #3b6fd8;
+  min-width: 140px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  display: inline-block;
+}
+
+.back-button {
+  margin-top: 1.2em;
+  display: inline-flex;
   align-items: center;
+  gap: 0.5em;
+  padding: 0.85em 1.2em;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  background: linear-gradient(90deg, #4f8cff 0%, #3b6fd8 100%);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.09);
+  letter-spacing: 0.01em;
+  transition: background 0.2s, transform 0.1s;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background: linear-gradient(90deg, #3b6fd8 0%, #2851a3 100%);
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* Responsive Student Profile */
+@media (max-width: 600px) {
+  .student-profile-container {
+    padding: 1.1rem 0.4rem 1.2rem 0.4rem;
+    border-radius: 14px;
+    margin-top: 18px;
+    max-width: 98vw;
+  }
+  .student-card {
+    padding: 1rem 0.7rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+  .student-card p strong {
+    min-width: 90px;
+    font-size: 1em;
+  }
+  .back-button {
+    width: 100%;
+    justify-content: center;
+    font-size: 1em;
+    padding: 0.9em 0;
+    border-radius: 8px;
+  }
+}
+
+/* Navbar & Header */
+.app-header {
+  text-align: center;
+  background: linear-gradient(90deg, #4f8cff 0%, #3b6fd8 100%);
+  color: #fff;
+  padding: 1.5rem 0.5rem 1rem 0.5rem;
+  border-bottom: 3px solid #eaf1fb;
+  box-shadow: 0 2px 10px rgba(30, 64, 175, 0.08);
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.app-tagline {
+  font-size: 1rem;
+  font-style: italic;
+  opacity: 0.85;
+  margin-top: 0.3em;
+}
+
+/* --- Navbar Desktop & Mobile --- */
+.navbar {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  gap: 2.2em;
+  background: #f6faff;
+  border-bottom: 1px solid #eaf1fb;
+  padding: 0.7em 0;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.04);
+  position: relative;
+  z-index: 100;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-links {
+  display: flex;
+  gap: 1.2em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-link {
+  color: #3b6fd8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.07em;
+  padding: 0.5em 1.2em;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: #eaf1fb;
+  color: #2851a3;
+  transform: scale(1.05);
+  text-decoration: none;
+}
+
+/* Hamburger Button - hidden on desktop */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.7em;
+  margin-left: auto;
+  z-index: 1001;
+}
+
+.hamburger-box {
+  width: 28px;
+  height: 22px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  display: block;
+  background-color: #3b6fd8;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.hamburger-inner {
+  top: 9px;
+}
+
+.hamburger-inner::before {
+  content: "";
+  top: -9px;
+}
+
+.hamburger-inner::after {
+  content: "";
+  top: 9px;
+}
+
+/* Hamburger active (X) */
+.hamburger.active .hamburger-inner {
+  background-color: transparent;
+}
+.hamburger.active .hamburger-inner::before {
+  transform: translateY(9px) rotate(45deg);
+}
+.hamburger.active .hamburger-inner::after {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* --- Responsive Navbar for Mobile --- */
+@media (max-width: 900px) {
+  .navbar {
+    gap: 1em;
   }
-  to {
-    transform: rotate(360deg);
+  .nav-links {
+    gap: 0.5em;
   }
+  .nav-link {
+    font-size: 1em;
+    padding: 0.5em 0.8em;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    gap: 0;
+    padding: 0.5em 0 0.2em 0;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0.5em;
+    background: #fff;
+    box-shadow: 0 4px 16px rgba(30, 64, 175, 0.07);
+    border-radius: 10px;
+    margin-top: 0.5em;
+    padding: 0.7em 0.5em;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-link {
+    padding: 0.7em 1em;
+    font-size: 1.05em;
+    border-radius: 8px;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Responsive Layout */
+.page-container {
+  padding: 1.2rem 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Export/Import */
+.export-import-upload {
+  margin-top: 1.2em;
+}
+
+.export-import-input {
+  margin-top: 0.7em;
+  padding: 0.7em;
+  border-radius: 8px;
+  border: 1px solid #c6d6f3;
+  background: #fff;
+}
+
+.export-import-status {
+  margin-top: 1em;
+  font-weight: 500;
+  color: #3b6fd8;
+}
+
+/* Inventory Total */
+.inventory-total {
+  text-align: right;
+  margin-top: 1.5em;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Animations */
+.button,
+.add-student-form button,
+.update-fees-form button,
+.inventory-form button,
+.export-import-button,
+.students-table button,
+.back-button,
+.nav-link {
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+input,
+select,
+textarea {
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
