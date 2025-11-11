@@ -62,7 +62,7 @@ const AddStudentForm = () => {
         // Update existing student
 
         await axios.put(
-          `https://hostel-backend-zyws.onrender.com/api/students${studentId}`,
+          `https://hostel-backend-zyws.onrender.com/api/students/${studentId}`,
           formData
         );
 
