@@ -19,7 +19,9 @@ const StudentProfile = () => {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this student?")) {
       try {
-        await axios.delete(`https://hostel-backend-zyws.onrender.com/api/students/${id}`);
+        await axios.delete(
+          `https://hostel-backend-zyws.onrender.com/api/students/${id}`
+        );
         alert("✅ Student deleted successfully!");
         navigate("/");
       } catch (err) {
@@ -78,7 +80,19 @@ const StudentProfile = () => {
         </p>
       </div>
 
-      <button className="button button-danger" onClick={handleDelete} style={{ marginBottom: "1em" }}>
+      <button
+        className="button edit-btn"
+        style={{ marginBottom: "1em", marginRight: "1em" }}
+        onClick={() => navigate(`/add-student?id=${student.id}`)}
+      >
+        Edit Student
+      </button>
+
+      <button
+        className="button button-danger"
+        onClick={handleDelete}
+        style={{ marginBottom: "1em" }}
+      >
         Delete Student
       </button>
       <br />
