@@ -1,65 +1,6 @@
-// import React from "react";
-// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
-// // Components
-// import StudentsList from "./components/StudentsList";
-// import AddStudentForm from "./components/AddStudentForm";
-// import UpdateFees from "./components/UpdateFees";
-// import Inventory from "./components/Inventory"; // ✅ new import
-// import ExportImport from "./components/ExportImport"; // ✅ (abhi bana nahi, next step me banaenge)
-// import StudentProfile from "./components/StudentProfile";
-
-// function App() {
-//   return (
-//     <Router>
-//       {/* ✅ Navbar */}
-//       <nav style={styles.navbar}>
-//         <Link style={styles.link} to="/">Home</Link>
-//         <Link style={styles.link} to="/add-student">Add Student</Link>
-//         <Link style={styles.link} to="/update-fees">Student Fees Update</Link>
-//         <Link style={styles.link} to="/inventory">Inventory</Link>
-//         <Link style={styles.link} to="/backup">Export/Import</Link>
-//       </nav>
-
-//       {/* ✅ Page Routes */}
-//       <div style={styles.container}>
-//         <Routes>
-//           <Route path="/" element={<StudentsList />} />
-//           <Route path="/add-student" element={<AddStudentForm />} />
-//           <Route path="/update-fees" element={<UpdateFees />} />
-//           <Route path="/inventory" element={<Inventory />} />
-//           <Route path="/backup" element={<ExportImport />} />
-//           <Route path="/student/:id" element={<StudentProfile />} />
-//         </Routes>
-//       </div>
-//     </Router>
-//   );
-// }
-
-// // ✅ Inline CSS
-// const styles = {
-//   navbar: {
-//     display: "flex",
-//     gap: "15px",
-//     background: "#282c34",
-//     padding: "15px",
-//   },
-//   link: {
-//     color: "white",
-//     textDecoration: "none",
-//     fontWeight: "bold",
-//   },
-//   container: {
-//     padding: "20px",
-//   },
-// };
-
-// export default App;
-
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 
-// Components
 import StudentsList from "./components/StudentsList";
 import AddStudentForm from "./components/AddStudentForm";
 import UpdateFees from "./components/UpdateFees";
@@ -105,7 +46,7 @@ function App() {
     <Router>
       {/* Header */}
       <header className="app-header">
-        <h1 className="app-title">The Gurukul Premium Hostel</h1>
+        <h1 className="app-title">The Hostel</h1>
         <p className="app-tagline">(अप्प दीपो भव:)</p>
       </header>
 
